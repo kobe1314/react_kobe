@@ -19,10 +19,6 @@
         "react"
     ],
     "rules": {
-        "quotes": [
-            "error",
-            "single"
-        ],
         "semi": [
             "error",
             "always"
@@ -31,7 +27,6 @@
         "no-debugger": "error",
         "no-dupe-args": "error",
         "no-caller": "error",
-        "no-invalid-this": "error",
         "no-unmodified-loop-condition": "error",
         "no-with": "error",
         "no-catch-shadow": "error"

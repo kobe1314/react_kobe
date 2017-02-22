@@ -35,14 +35,14 @@ module.exports = {
                 loader: ExtractTextPlugin.extract('style', ['css','less']),
             },
             {
-                test: /\.(eot|woff|svg|ttf|woff2|gif|appcache|mp3)(\?|$)/,
+                test: /\.(eot|woff|svg|ttf|woff2|appcache|mp3|pdf)(\?|$)/,
                 exclude: /node_modules/,
-                loader: 'file-loader?name=[name].[ext]',
+                loader: 'file-loader?name=files/[name].[ext]',
             },
             {
                 test: /\.(png|jpg|gif)$/,
                 exclude: /node_modules/,
-                loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]',
+                loader: 'url-loader?limit=8192&name=images/[name].[ext]',
                 //注意后面那个limit的参数，当你图片大小小于这个限制的时候，会自动启用base64编码图片
             }
         ]
@@ -57,6 +57,7 @@ module.exports = {
         new HtmlWebpackPlugin({  //根据模板插入css/js等生成最终HTML
             filename: '../index.html', //生成的html存放路径，相对于 output.path
             template: './src/index_template.html', //html模板路径
+            favicon: 'favicon.ico', // 自动把根目录下的favicon.ico图片加入html
             inject: true, // 是否将js放在body的末尾
             hash: false, // 是否为本页面所有资源文件添加一个独特的hash值
         }),
@@ -75,7 +76,8 @@ module.exports = {
                 comments: false, // 删除代码中所有注释
             },
             compress: {
-                warnings: false, // 估计是不输出警告信息之类的
+                warnings: false, // 删除没有用的代码时是否发出警告
+                drop_console: true, // 是否删除所有的console
             },
         }),
     ],

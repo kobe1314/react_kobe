@@ -45,7 +45,7 @@ module.exports = {
                 loaders: ['style', 'css', 'less'],
             },
             {
-                test: /\.(eot|woff|svg|ttf|woff2|gif|appcache|mp3)(\?|$)/,
+                test: /\.(eot|woff|svg|ttf|woff2|appcache|mp3|pdf)(\?|$)/,
                 exclude: /node_modules/,
                 loader: 'file-loader?name=[name].[ext]',
             },
