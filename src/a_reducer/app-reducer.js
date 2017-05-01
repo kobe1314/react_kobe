@@ -4,8 +4,8 @@
 
 const initState = {
   inputvalue: 0, // 主页中决定显示哪一个子页
-  inputvalue2: 0, // 主页中决定显示哪一个子页
-  fetchvalue: [],
+  inputvalue2: 0 // 主页中决定显示哪一个子页
+  // fetchvalue: [],
 };
 
 // ============================================
@@ -27,12 +27,12 @@ const testAdd2 = (state, action) => {
   });
 };
 
-const testFetch = (state, action) => {
-  const { payload } = action;
-  return Object.assign({}, state, {
-    fetchvalue: payload,
-  });
-};
+// const testFetch = (state, action) => {
+//   const { payload } = action;
+//   return Object.assign({}, state, {
+//     fetchvalue: payload,
+//   });
+// };
 // ============================================
 // reducer function
 
@@ -43,8 +43,8 @@ const reducerFn = (state = initState, action) => {
     return testAdd(state, action);
   case 'TEST::add2':
     return testAdd2(state, action);
-  case 'TEST::testFetch':
-    return testFetch(state, action);
+  // case 'TEST::testFetch':
+  //   return testFetch(state, action);
   default:
     return actDefault(state, action);
   }

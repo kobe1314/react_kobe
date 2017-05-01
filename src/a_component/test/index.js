@@ -42,8 +42,7 @@ class Com extends React.Component {
         <Table
           dataSource={(() => {
             if (this.props.fetchValue) {
-              return this.props.fetchValue.map((v, i) => ({
-                key: i,
+              return this.props.fetchValue.map((v) => ({
                 fund_name: v.fund_name,
                 stype_name: v.stype_name,
               }));

@@ -27,7 +27,7 @@ import appAction from '../../a_action/app-action';
 const mapStoreStateToProps = (state) => ({
   dispatch: state.dispatch,
   testvalue: state.app.inputvalue,
-  fetchValue: state.app.fetchvalue,
+  fetchValue: state.fetchReducer.fetchvalue,
 });
 
 // ==================
