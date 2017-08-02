@@ -5,6 +5,7 @@ import { Router, browserHistory } from 'react-router'; // 路由组件
 // babel本身只能转换ES6语法，但ES6新增的MAP、SET、Generator等新功能不会转换，所以需要此插件
 // 直接引入到这里即可
 import 'babel-polyfill';
+import DevTools from './a_container/DevTools';
 
 // import store and history
 import store from './store';
@@ -20,7 +21,10 @@ import AppRoutes from './route';	// 所有定义好的路由
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router routes={AppRoutes} history={browserHistory} queryKey={false} />
+    <div>
+      <Router routes={AppRoutes} history={browserHistory} queryKey={false} />
+      <DevTools />
+    </div>
   </Provider>,
   document.getElementById('app-root')
 );
