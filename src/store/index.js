@@ -5,9 +5,9 @@ import DevTools from '../a_container/DevTools';
 
 // ============================================
 // Create store middlewares
-
+// const loggerMiddleware = createLogger();
 const enhancer = compose(
-  //你要使用的中间件，放在前面
+  //当有多个中间件的时候，一般会把logger放到最后面，中间件对位置很敏感
   applyMiddleware(ReduxThunk),
   //必须的！启用带有monitors（监视显示）的DevTools
   DevTools.instrument()

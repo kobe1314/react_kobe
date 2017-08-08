@@ -34,15 +34,17 @@ class Com extends React.Component {
         key: 'stype_name',
       }
     ];
+
+    const {value, onClick,fetchValue} = this.props;
     return (
       <div>
-        <span>{this.props.value}</span>
-        <button onClick={() => this.props.onClick(this.props.value)}>点1击</button>
+        <span>{value}</span>
+        <button onClick={() => onClick(value)}>点1击</button>
         <br/>
         <Table
           dataSource={(() => {
-            if (this.props.fetchValue) {
-              return this.props.fetchValue.map((v) => ({
+            if (fetchValue) {
+              return fetchValue.map((v) => ({
                 fund_name: v.fund_name,
                 stype_name: v.stype_name,
               }));

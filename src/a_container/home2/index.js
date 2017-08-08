@@ -53,12 +53,13 @@ class HomePageContainer extends React.Component {
   }
 
   render() {
+    const {testvalue, fn:{onTestAdd}} = this.props;
     return (
       <div>
-        <span>22222</span>
+        <span>This is home2</span>
         <Test
-          value={this.props.testvalue}
-          onClick={this.props.fn.onTestAdd}
+          value={testvalue}
+          onClick={onTestAdd}
         />
         <br />
         <Link to='/home'>home1</Link>

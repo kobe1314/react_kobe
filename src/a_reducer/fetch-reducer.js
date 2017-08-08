@@ -3,9 +3,7 @@ const initState = {
 };
 
 const testFetch = (state, action) => {
-    const {
-        payload
-    } = action;
+    const { payload } = action;
     // return Object.assign({}, state, {
     //     fetchvalue: payload,
     // });
@@ -28,7 +26,7 @@ const testFetch = (state, action) => {
 
 const fetchFunction = (state = initState, action) => {
     switch (action.type) {
-        case 'TEST::testFetch':
+        case 'FETCH_OBJ':
             return testFetch(state, action);
         default:
             return state;
