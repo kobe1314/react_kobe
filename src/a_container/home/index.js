@@ -1,54 +1,22 @@
-/* 主页 */
-
-// ==================
-// 所需的各种插件
-// ==================
-
 import React, { PropTypes as P } from 'react';
 import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
-
-// ==================
-// 所需的所有组件
-// ==================
-
 import Test from '../../a_component/test';
-
-// ==================
-// 本页面所需action
-// ==================
-
-import appAction from '../../a_action/app-action';
+import ReduxCom from '../../a_component/test/reduxCom';
+import { onTestAdd, fetchData } from  '../../a_action/action';
 
 // ==================
 // 最终要交给redux管理的所有变量
 // ==================
 
-const mapStoreStateToProps = (state) => ({
+const mapStoreStateToProps = (state,ownProps) => (
+  console.log(ownProps),
+  {
   dispatch: state.dispatch,
   testvalue: state.app.inputvalue,
   fetchValue: state.fetchReducer.fetchvalue,
 });
 
-// ==================
-// 最终要交给redux管理的所有action
-// 既定义哪些方法将成为action
-// ==================
-
-const mapDispatches = (dispatch) => ({
-  fn: {
-    onTestAdd: (v) => {
-      dispatch(appAction.onTestAdd(v));
-    },
-    onFetch: () => {
-      dispatch(appAction.leftboxInit());
-    }
-  },
-});
-
-// ==================
-// Definition
-// ==================
 class HomePageContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -56,23 +24,15 @@ class HomePageContainer extends React.Component {
     };
   }
 
-  goBack() {
-    browserHistory.goBack();
-  }
   render() {
-    console.log('location:', this.props.location);
-    console.log('browserHistory:', browserHistory);
     return (
       <div>
-        <Test
+        <ReduxCom
           value={this.props.testvalue}
-          onClick={this.props.fn.onTestAdd}
+          onClick={this.props.onTestAdd}
           fetchValue={this.props.fetchValue}
         />
-        <button onClick={this.props.fn.onFetch}>fetch</button>
-        1111
-        <Link to="/home2">home2</Link>
-        <button onClick={this.goBack}>back</button>
+        <button onClick={this.props.fetchData}>fetch</button>
       </div>
     );
   }
@@ -84,10 +44,12 @@ class HomePageContainer extends React.Component {
 
 HomePageContainer.propTypes = {
   dispatch: P.func,
-  fn: P.object,
+  onTestAdd: P.func,
+  router: P.object,
   testvalue: P.number,
   location: P.any,
   history: P.any,
+  fetchData:P.func,
   fetchValue: P.array,
 };
 
@@ -95,4 +57,4 @@ HomePageContainer.propTypes = {
 // Export
 // ==================
 
-export default connect(mapStoreStateToProps, mapDispatches)(HomePageContainer);
+export default connect(mapStoreStateToProps, {onTestAdd,fetchData})(HomePageContainer);

@@ -6,6 +6,7 @@ import { Router, browserHistory } from 'react-router'; // 路由组件
 // 直接引入到这里即可
 import 'babel-polyfill';
 import DevTools from './a_container/DevTools';
+import { syncHistoryWithStore,routerMiddleware } from 'react-router-redux';
 
 // import store and history
 import store from './store';
@@ -18,6 +19,7 @@ import './css/css.css';
 // ====================
 
 import AppRoutes from './route';	// 所有定义好的路由
+const history = syncHistoryWithStore(browserHistory,store);
 
 ReactDOM.render(
   <Provider store={store}>

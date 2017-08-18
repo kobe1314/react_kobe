@@ -9,13 +9,6 @@ export default class AdviserActions {
     };
   }
 
-  static onTestAdd2(num) {
-    return {
-      type: 'TEST::add2',
-      payload: num + 1,
-    };
-  }
-
   // 进入投顾主页时，初始化左边box数据
   static leftboxInit() {
     return (dispatch) => {
@@ -29,3 +22,9 @@ export default class AdviserActions {
     // return {type:'TEST::testFetch',payload:[{fund_name:'kobe',stype_name:'12333'}]} ;
   }
 }
+export const onTestAdd = (num) => {
+  return {
+    type: 'ADD',
+    payload : num+1
+  };
+};

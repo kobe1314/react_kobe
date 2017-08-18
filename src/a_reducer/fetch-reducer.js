@@ -15,19 +15,12 @@ const testFetch = (state, action) => {
     };
 };
 
-// function fetchFunction(state = initState, action) {
-//     switch (action.type) {
-//         case 'TEST::testFetch':
-//             return testFetch(state, action);
-//         default:
-//             return state;
-//     }
-// };
-
 const fetchFunction = (state = initState, action) => {
     switch (action.type) {
         case 'FETCH_OBJ':
             return testFetch(state, action);
+        case 'USER_INFO':
+            return {...state, fetchvalue: action.payload};
         default:
             return state;
     }
