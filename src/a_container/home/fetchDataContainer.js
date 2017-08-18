@@ -1,17 +1,13 @@
 import React, { PropTypes as P } from 'react';
 import { connect } from 'react-redux';
-import FetchUserComponent from '../../a_component/test/fetchUserComponent';
+import FetchComponent from '../../a_component/test/fetchDataComponent';
 import { fetchData } from  '../../a_action/action';
-
-// ==================
-// 最终要交给redux管理的所有变量
-// ==================
-
 
 const mapStateToProps = (state) => (
   {
     fetchValue: state.fetchReducer.fetchvalue
   });
+
 class FetchDataContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -22,10 +18,10 @@ class FetchDataContainer extends React.Component {
   render() {
     return (
       <div>
-        <FetchUserComponent
+        <FetchComponent
           fetchValue={this.props.fetchValue}
         />
-        <button onClick={this.props.fetchData}>fetch</button>
+        <button onClick={this.props.fetchData}>fetch data</button>
       </div>
     );
   }

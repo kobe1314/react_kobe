@@ -1,7 +1,5 @@
 import React, { PropTypes as P } from 'react';
 import { connect } from 'react-redux';
-import { Link, browserHistory } from 'react-router';
-import Test from '../../a_component/test';
 import ReduxCom from '../../a_component/test/reduxCom';
 import { onTestAdd, fetchData } from  '../../a_action/action';
 
@@ -10,7 +8,6 @@ import { onTestAdd, fetchData } from  '../../a_action/action';
 // ==================
 
 const mapStoreStateToProps = (state,ownProps) => (
-  console.log(ownProps),
   {
   dispatch: state.dispatch,
   testvalue: state.app.inputvalue,
@@ -30,9 +27,7 @@ class HomePageContainer extends React.Component {
         <ReduxCom
           value={this.props.testvalue}
           onClick={this.props.onTestAdd}
-          fetchValue={this.props.fetchValue}
         />
-        <button onClick={this.props.fetchData}>fetch</button>
       </div>
     );
   }
@@ -47,8 +42,6 @@ HomePageContainer.propTypes = {
   onTestAdd: P.func,
   router: P.object,
   testvalue: P.number,
-  location: P.any,
-  history: P.any,
   fetchData:P.func,
   fetchValue: P.array,
 };
